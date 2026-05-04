@@ -1,0 +1,555 @@
+# Extracted from: CH1-Objects-classes-Part1 .pdf
+
+--- Page 1 ---
+CHAPTER 1:
+CLASSES AND OBJECTS 
+(PART 1)
+CS111: Programming Language II
+
+--- Page 2 ---
+TOPICS
+▪Class basics:
+▪Defining and using a class
+▪Access identifiers
+▪Encapsulation and Data Validation
+▪Set/get methods
+▪Defining constructors
+▪Default Constructor
+▪Copy Constructor
+▪Overloading constructor
+▪Using this reference
+2 Dr. MFH, 2022
+Dr. Huda Alrammah, 2024
+
+--- Page 3 ---
+IN JAVA 
+▪Everything must be in a class. There are no global 
+functions or global data.
+Even Main ………… is a Class
+3
+
+--- Page 4 ---
+What Is A Class?
+▪Let’s start by an example:
+•Properties:
+–Name
+–Age
+–Breed
+–Favorite Food•Behaviors:
+–Make meow sound
+–Play
+–Wash
+–Eat
+–Hunt
+Copyright © 2017, Oracle and/or its affiliates. All rights reserved.4
+
+--- Page 5 ---
+What Is A Class?
+▪A blueprint or recipe for an object
+▪Describes an object ’s properties (data types/ attributes) and
+behaviours (operations/methods)
+▪Used to create object instances
+Copyright © 2017, Oracle and/or its affiliates. All rights reserved.
+Catclass
+-Properties
+-Behaviors
+Object instances
+5
+
+--- Page 6 ---
+Creating New Instances From A Blueprint →Objects
+Copyright © 2017, Oracle and/or its affiliates. All rights reserved.6
+Catclass
+Properties
+•name
+•age
+•favoriteFoodBehaviors
+•meow
+•play
+•eat
+cat2
+•"Misty"
+•5
+•"Chicken"
+cat3
+•"Tiger"
+•15
+•"BlueJ"
+cat1
+•"Opal"
+•11
+•"Mice"
+
+--- Page 7 ---
+So…………Object -Oriented Programming
+Copyright © 2017, Oracle and/or its affiliates. All rights reserved.7
+•Interaction of  objects
+•No arranged sequence
+
+--- Page 8 ---
+Modeling Properties And Behaviors
+UML Class Diagrams
+▪UML: modeling language to capture the architectural, behavioral and 
+structural aspects of a system. 
+▪Class diagram describes the objects in a system and their 
+relationships →widely used by the developer community.
+8
+
+--- Page 9 ---
+Modeling Properties And Behaviors
+UML Class Diagrams
+9Customer class
+name  
+address  
+billing info  
+age
+customer number  
+ordernumber
+requestDiscount()  
+setAddress()  
+shop()  
+displayCustomer()Cla ss name
+Fields
+Methods
+
+--- Page 10 ---
+Marks For UML -supported Visibility Types
+Mark Visibility type
++ Public
+# Protected
+- Private
+~ Package
+10
+ Dr. MFH, 2022
+
+--- Page 11 ---
+How To Define A Class?
+Class 
+design 
+Object 
+creation
+Member 
+access
+11•When you have an idea or requirement 
+for a program …
+–Consider what type of  objects may 
+exist in this program.
+–Consider the properties and 
+behaviors of  these object types.
+–Consider how objects interact.
+
+--- Page 12 ---
+12public String name = "Junior Duke";
+publicintcustID =1205;  
+public String address;  
+publicintorderNum ;  
+publicintage;
+;2
+3
+4
+5
+6
+7
+8
+9
+10public void displayCustomer(){
+System. out.println( "Customer: "+name )
+}
+11 }Properties
+Behaviors1 public class Customer {➢Java Class Type (.java file -name extension)
+➢one class →one .java file
+➢The class keyword
+➢Public keyword →access modifier →class is 
+“available” to the public
+➢No main→can’t executeHow To Define A Class?
+
+--- Page 13 ---
+Example: Customer Class
+13
+Copyright © 2017 , Oracle and/or its affiliates. All rights reserved.Customer Properties andBehaviors
+•Properties:
+–Name
+–Address
+–Age
+–Order number
+–Customer number•Behaviors:
+–Shop
+–Setaddress
+–Add item tocart
+–Ask for adiscount
+–Display customer details
+
+
+--- Page 14 ---
+Example: Customer Class
+14
+Copyright © 2017 , Oracle and/or its affiliates. All rights reserved.A CUSTOMER class
+String name = "Junior Duke" ;  
+int    custID =1205;
+Stringaddress;
+int 
+intorderNum; 
+age;
+public void displayCustomer(){
+System. out.println( "Customer: "+name );
+}2
+3
+4
+5
+6
+7
+8
+9
+10
+11 }Fields
+(Properties)  
+(Attributes)
+Methods
+(Behaviors)Cla ss declaration
+1 public class Customer {
+
+
+--- Page 15 ---
+15▪Only one main method for each application
+▪Put the main method in another class (java file)
+▪In the main():
+▪Define object instance as:
+▪ClassName objectName = new ClassName();
+▪Ex: Customer cust1 = newCustomer();
+▪Access the class attributes or methods using the created object:
+▪cust1. name = “ Junior”;How To Define A Class?
+Main() method
+
+--- Page 16 ---
+Controlling Access To Members 
+▪Access modifiers: limit the visibility of fields and 
+▪methods between classes.
+▪Public→Methods
+▪Any other class can directly access that member by name
+▪Private→data
+▪not accessible outside the class ( Data Hiding )
+▪protected . 
+16
+
+--- Page 17 ---
+ENCAPSULATION
+DATA HIDING –DATA VALIDATION
+▪Programmer using a class method need notknow details of 
+implementation
+▪Only needs to know whatthe method does
+▪Information hiding:
+▪Designing a method so it can be used without knowing details
+▪Also referred to as abstraction
+▪Why data hiding is a good programming practice? 
+▪this is needed to perform data validation , i.e. ,make sure that 
+values assigned to attributes are valid (using if st.)
+▪does not allow external program to put non valid values.
+17
+
+--- Page 18 ---
+ENCAPSULATION
+DATA HIDING –DATA VALIDATION
+▪Start class definition with comment on how to use class
+▪Declare all instance variables in the class as private .
+▪Provide public accessor methods to retrieve data Provide public 
+methods manipulating data
+▪Such methods could include public mutator methods.
+▪Place a comment before each public method heading that fully 
+specifies how to use method.
+▪Make any helping methods private.
+▪Write comments within class definition to describe implementation 
+details.
+18
+
+--- Page 19 ---
+Customer Class
+Modify the class:
+–Change its 
+fields to  private.// Customer.java
+public class Customer { 
+// data →private
+private String name = 
+"JrDuke" ;  
+private int custID =1205;
+private Stringaddress;
+private int  orderNum;  
+private int age;
+//methods →public
+} 19
+
+--- Page 20 ---
+Getter and Setter Methods
+•An Object needs to “have access" to its data
+•accessor –getter methods
+•Allow object to read data
+•Also called " get methods"
+•Simple retrieval of  member data
+•Getters are public.
+•Getters usually accept no arguments.
+•Getters return the value of  a particular variable.
+•Most private variables require a getter method.
+20
+
+--- Page 21 ---
+Customer Class// Customer.java
+public class Customer { 
+// data
+//methods 
+//set methods
+//get methods
+public String getName()
+{returnname ;} 
+public int getCustID()
+{returncustID ;} 
+public StringgetAddress()
+{returnaddress;} 
+public int getOrderNum ()
+{returnorderNum;} 
+public int getAge()
+{returnage ;}
+}Write the Getter
+methods for the data 
+defined
+21
+
+--- Page 22 ---
+Getter and Setter Methods
+•Mutator–setter methods
+•Allow object to change data
+•Also called “ set methods“
+•Setters are usually public.
+•Setters usually accept arguments.
+•Setters are void type methods.
+•Manipulated based on application
+•Can be used when a class wants to modify another class’s field.
+22
+
+--- Page 23 ---
+Customer Class// Customer.java
+public class Customer { 
+// data
+//methods 
+//set methods
+public void setName(String name)
+{this.name = name;} 
+public void setCustID (int custID)
+{this.custID = custID; } 
+public void setAddress(String address)
+{this.address= address; } 
+public void setOrderNum (int orderNum)
+{this.orderNum=orderNum;}
+public void setAge(int age)
+{this.age = age; }
+//get methods
+}Write the Setter
+methods for the data 
+defined
+2-Write the Display 
+customer details 
+method
+23
+
+--- Page 24 ---
+L.Maram Alshablan, 2025public void setName(String name)
+{name = name; }
+public void setName(String n)
+{name = n;} 
+public void setName(String name)
+{this.name = name; }
+24
+
+--- Page 25 ---
+The this Keyword
+▪this is a reference to the current object .
+▪You can treat it like any other object reference.
+▪Which means you can use the dot operator ( . ).
+▪this.name accesses the Customer’s field.
+▪this.setName() accesses the Customer’s method.
+25
+
+--- Page 26 ---
+Customer Class// Customer.java
+public class Customer { 
+// data
+//methods 
+//set methods
+//get methods
+}Write the Display 
+customer details 
+method
+26public void displayCustomer()
+{
+System.out.println("Customer details are");
+System.out.println("custID:"+ this.custID);
+System.out.println("address:"+ this.address);
+System.out.println("orderNum:"+ this.orderNum);
+System.out.println("age:"+ this.age);
+}
+
+--- Page 27 ---
+Initializing Data With Constructors
+▪A constructor is a special method.
+▪Its goal is to “construct” an object by setting the initial field values.
+▪A constructor can be used to initialize an object of  a class 
+when the object is created with new
+▪An object’s constructor is called once.
+▪This occurs during instantiation.
+▪And is never called again.
+27
+
+--- Page 28 ---
+Writing 
+Constructor of  
+Customer class
+Constructor must be 
+public
+Same name as class
+no return type
+Parameters
+Dr. MFH, 2022 28// Customer.java
+public class Customer { 
+// data
+//Constructor
+public
+this.name = name;  
+this.custID =custID;
+this.address = address ;
+this.orderNum= orderNum;
+this.age = age;
+}
+//set methods //get methods //methods 
+}Customer (String name, int 
+custID, Stringaddress, int orderNum, 
+int age)
+
+--- Page 29 ---
+Let’s Write The Main Class
+public class CustomerTest {
+public static void main(String[] args) {
+\\two Object instances
+\\Display the data
+Customer 1.displayCustomer();
+Customer 2.displayCustomer();
+} 29Customer Customer1 = new
+Customer("Salah" ,1784758, "Riyadh", 123, 25)
+Customer Customer2 = new
+Customer("Sarah" ,176767758, "Jeddah", 1223, 35)
+
+--- Page 30 ---
+THE DEFAULT CONSTRUCTOR
+▪By default, the compiler provides a default constructor with no 
+parameters in any class that does not explicitly include a 
+constructor. 
+▪If  you declare any constructors for a class, the Java compiler will not create a 
+default constructor for that class
+▪With the default constructor, its instance variables are initialized to 
+their default values. 
+30
+
+--- Page 31 ---
+THE DEFAULT CONSTRUCTOR  ( EXAMPLE)
+31
+ L. Maram Alshablan, 2025
+
+--- Page 32 ---
+Overloaded Constructors 
+▪means having several constructors inside the same class.
+▪enable objects of a class to be initialized in different ways. 
+▪multiple constructor declarations with different signatures. 
+▪The compiler differentiates signatures by :
+▪the number of  parameters,
+▪thetypes of  the parameters and 
+▪the order of  the parameter types in each signature.
+32
+
+--- Page 33 ---
+Write another 
+Constructor of  
+Customer class
+33// Customer.java
+public class Customer { 
+// data
+//Constructor
+public Customer( String name,
+int age)
+{
+this.name = name;  
+this.age = age;
+}
+//set methods
+//get methods
+//methods 
+} Dr.MFH, 2022
+
+--- Page 34 ---
+COPY CONSTRUCTOR
+34•A copy constructor is a constructor with a single argument of  the 
+same type as the class.
+•The copy constructor should create an object that is a separate 
+object but with the instance variables set so that the object is an 
+exact copy of the argument object
+Example : For the Customer class
+publicCustomer (Customer existingCustomer )
+{
+this.name = existingCustomer .name;  
+this.custID =existingCustomer .custID;
+this.Address = existingCustomer .address;
+this.orderNum; = existingCustomer .orderNum;
+this.age = existingCustomer .age;
+}
+Dr. Huda Alrammah, 2024
+
+--- Page 35 ---
+THAT ’S ALL FOR THIS 
+CHAPTER …..40
+
+--- Page 36 ---
+SELF READING41
+
+--- Page 37 ---
+IMPORTANT HINT 
+Dr. MFH, 2022
+
+
+--- Page 38 ---
+BE CAREFUL!!
+Dr. MFH, 2022
+
+
+--- Page 39 ---
+Instance Variables, Initial Values
+▪Primitive -type instance variables
+▪initialized by default
+▪byte, char, short, int, long, float  and double initialized to 0
+▪Boolean initialized to false. 
+▪non-primitive types (classes ) 
+▪reference types : store the locations of objects in the computer ’s memory.
+▪not initialized by default.
+▪String ??
+Dr. MFH, 2022
+
+--- Page 40 ---
+Dr. MFH, 2022
+
+
+--- Page 41 ---
+Dr. MFH, 2022
+
+
+--- Page 42 ---
+Dr. MFH, 2022 47
+
+
+--- Page 43 ---
+Dr. MFH, 2022 48
+
+
+--- Page 44 ---
+USING THIS REFERENCE
+▪Every object can access a reference to itself with keyword this .
+▪Implicitly: 
+▪refer to the object ’s instance variables and other methods inside member methods. 
+▪Enables the class ’s code to know which object should be manipulated. 
+▪Explicitly:
+▪Can also use keyword this in a non-static method’s body. 
+Dr. MFH, 2022

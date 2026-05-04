@@ -1,0 +1,236 @@
+# Extracted from: CH2-Relationships between classes by Dr. Faten (1).pdf
+
+--- Page 1 ---
+Chapter 2:
+Classes relationships: 
+COMPOSITION
+CS111: Programming Language II
+
+--- Page 2 ---
+OBJECTIVES OF THIS CHAPTER
+▪Review the use of UML class diagrams in object -oriented design
+▪Introduce the concept of relationships between classes
+▪Understand the meaning of the has -a relationship
+▪Identify different types of class relationships in UML .
+2
+
+--- Page 3 ---
+Recall That A UML
+Class Diagram Shows:
+▪The class name
+▪Attributes (data fields)
+▪Methods (operations)
+▪Visibility:
+▪+ public
+▪- private
+▪# protected
+3
+
+
+--- Page 4 ---
+Why Do We Use UML to Model Relationships
+▪UML is used to visualize and document the structure 
+of a software system.
+▪Real-world software systems consist of  multiple 
+interacting classes.
+▪UML class diagrams allow us to clearly specify how 
+classes are connected.
+▪Defined UML symbols help avoid ambiguity when 
+describing class relationships.
+4
+
+
+--- Page 5 ---
+Relationships Between Classes
+UML class diagrams can represent different types of relationships between classes:
+➢Association
+▪A general relationship showing that objects of  two classes are connected or interact.
+➢Aggregation
+▪A has -a relationship where the part can exist independently of  the whole.
+➢Composition
+▪A stronger has -a relationship where the part is an essential component of  the whole.
+5
+
+
+--- Page 6 ---
+Association Relationship
+▪An association represents a relationship between objects of  two or more classes.
+▪It is the most general type of  relationship in UML.
+▪An association does not imply ownership or strong dependency.
+▪Objects involved in an association can exist independently.
+▪A specific instance of an association is called a link.
+▪Associations are often used to represent interaction or communication between objects.
+▪Associations are sometimes referred to as use relationships
+6
+
+
+--- Page 7 ---
+Association Relationship
+Multiplicity:
+▪Multiplicity specifies how many objects are connected in an association.
+▪Common multiplicities include:
+▪1 → exactly one
+▪0..* → zero or more
+▪1..* → one or more
+7
+A university can employ 
+ zero or more
+  
+faculty members (0..*)
+Each company is associated with exactly one contact person, and vice versa (1
+ –
+to
+–
+1)Client
+
+--- Page 8 ---
+Aggregation Relationship
+8➢Aggregation represents a has -a relationship between classes.
+➢It is a special form of  association.
+➢The part can exist independently of  the whole ( The whole and the part have separate 
+lifecycles ).
+➢The relationship does not imply strong ownership.
+➢UML Representation
+▪Aggregation is represented by an empty diamond ( ◇).
+▪The diamond is placed at the whole  side of the relationship.
+
+
+--- Page 9 ---
+Aggregation Example
+9Example: Student – Address:
+➢A Student  has an Address .
+➢An Address  can exist independently of  a Student.
+➢The same Address may be shared by more than one Student.
+▪Multiplicity:
+➢One student → one address
+➢One address → zero or more students
+
+
+--- Page 10 ---
+Composition Relationship
+10➢Composition represents a strong has -a relationship between classes.
+➢It is a stronger form of aggregation.
+➢The part cannot exist independently of the whole (The whole owns the part)
+➢If the whole object is destroyed, the part is destroyed as well.
+➢UML Representation
+▪Composition is represented by a filled diamond ( ◆).
+▪The diamond is placed at the whole  side of the relationship.
+
+
+--- Page 11 ---
+Composition EXAMPLE
+11Example: Student – Name
+➢A Student  has a Name .
+➢The Name  object is an essential part of  the Student.
+➢The Name cannot exist  without the Student.
+▪Multiplicity : One Student → one Name
+
+
+--- Page 12 ---
+Implementing Has -a Relationships In Java
+12▪A has-a relationship is implemented using instance variables  (object references).
+▪The “whole” class contains a field whose type is the “part” class.
+Note:
+❖The Name  class is defined separately.
+❖ The Student  class uses it through an instance variable (has -a).
+
+--- Page 13 ---
+Aggregation vs Composition (Quick Summary)
+13Client
+
+
+--- Page 14 ---
+Implementing “has -a” in java
+▪A has -a relationship is implemented using instance variables (object references).
+▪The “whole” class contains a field whose type is the “part” class.
+14
+Note:
+•Name is a separate and independent class.
+•The Student class contains a reference to a Name object to 
+model a has -a relationship.
+
+
+--- Page 15 ---
+CREATING PART OBJECTS (COMPOSITION)
+▪Creating the Part Object in the Constructor
+▪In composition, the whole object creates its part object.
+▪The part is usually created inside the constructor of  the whole.
+15
+
+
+--- Page 16 ---
+ACCESSING DATA FROM THE PART OBJECT
+Accessing Part Data (Getter Methods)
+▪The whole class can access the part’s data using getter methods.
+▪This keeps data fields private and follows encapsulation.
+▪Since name is the part object, its methods can only be accessed using the variable name, not 
+directly.
+16
+
+
+--- Page 17 ---
+USING THE COMPOSITION EXAMPLE IN MAIN
+▪The Student object is created in main.
+▪Calling displayName() shows how the student accesses data from its part 
+object (name)
+17
+
+
+--- Page 18 ---
+CASE STUDY: HOUSE AND ROOMS
+18
+
+
+--- Page 19 ---
+CASE STUDY: HOUSE AND ROOMS
+Part A — Room Class
+▪Create a class named Room.
+1)Add one field:  roomNumber (type: int)
+2)Write:
+▪a constructor that initializes roomNumber using 
+setRoomNumber(roomNumber)
+▪getter and setter for roomNumber
+3)Add validation in setRoomNumber(int roomNumber):
+If roomNumber is 0 or less, display a validation message and do not update 
+the field.
+19
+
+--- Page 20 ---
+CASE STUDY: HOUSE AND ROOMS
+Part B — House Class
+▪Create a class named House .
+1)Add two fields:
+▪houseName (type: String)
+▪rooms (type: Room[])
+2)Write:
+▪a constructor to initialize houseName and rooms
+▪getter and setter for each field
+3)Write a method displayRooms() that prints:
+▪the house name
+▪all room numbers inside the rooms array
+20
+
+--- Page 21 ---
+CASE STUDY: HOUSE AND ROOMS
+Part C — main method
+1)Create an array of Room objects with size 3.
+2)Fill the array with any valid room numbers of  your choice (each room number 
+must be greater than 0).
+3)Create a House object using:
+▪a house name of your choice
+▪the rooms array
+4)Update the rooms from main:
+▪Change the room number of  rooms[1] to 0 (invalid).
+▪→ A validation message should appear.
+▪→ Print the room number of  rooms[1] in main.
+▪Change the room number of  rooms[2] to 5 (valid).
+▪→ Print the room number of  rooms[2] in main.
+5)Call displayRooms() again to show the updated room numbers.
+21
+
+--- Page 22 ---
+THAT ’S ALL FOR THIS 
+CHAPTER …..
+Text Book:
+ Chapter 8 section 8
+Dr. MFH, 202222

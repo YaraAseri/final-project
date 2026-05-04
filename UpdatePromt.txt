@@ -1,0 +1,91 @@
+============================== BEGIN PROMPT ==============================
+
+APPLY FILE I/O MIGRATION (Lab 9 INLINE STYLE)
+
+I have an existing CS111 Java project that currently uses two separate
+utility classes for file handling: WriteText.java and ReadText.java.
+Migrate the project to keep file I/O INSIDE Main as Lab 9 does.
+
+  a) DELETE the two utility files completely:
+       <package>/WriteText.java   → DELETE
+       <package>/ReadText.java    → DELETE
+
+  b) ADD two static void methods at the BOTTOM of Main.java
+     (just above the closing } of the Main class):
+
+       /
+        * Saves all <items> to the text file.
+        */
+       public static void writeText() {
+           try {
+               Formatter output = new Formatter("<filename>.txt");
+               if (system.<getMainList>().isEmpty()) {
+                   System.out.println("No <items> yet.");
+               } else {
+                   for (<MainItemType> ele : system.<getMainList>()) {
+                       output.format(ele.toString() + "\n");
+                       output.format("\n---------------------------------------------\n");
+                   }
+                   System.out.println("All <items> saved to the text file <filename>.txt");
+               }
+               output.close();
+           } catch (SecurityException ex) {
+               System.err.println("You do not have write access to this file.");
+               System.err.println(ex);
+           } catch (FileNotFoundException ex) {
+               System.err.println("Error opening or creating file.");
+               System.err.println(ex);
+           }
+       }
+
+       /
+        * Reads the text file line by line and prints each line.
+        */
+       public static void readText() {
+           try {
+               Scanner fileIn = new Scanner(new File("<filename>.txt"));
+               while (fileIn.hasNextLine()) {
+                   System.out.println(fileIn.nextLine());
+               }
+               fileIn.close();
+           } catch (FileNotFoundException ex) {
+               System.err.println("Error opening or creating file.");
+               System.err.println(ex);
+           } catch (NoSuchElementException ex) {
+               System.err.println("File improperly formed.");
+               System.err.println(ex);
+           } catch (IllegalStateException ex) {
+               System.err.println("Error reading from file.");
+               System.err.println(ex);
+           }
+       }
+
+     Placeholder substitutions (decide based on the chosen domain):
+       <package>      → project package (e.g. sps, gms, fds, etbs)
+       <filename>     → short domain noun (e.g. parking, gym, food, wallet)
+       <items>        → plural domain noun (e.g. spots, members, orders)
+       <MainItemType> → the saved-list element type (e.g. ParkingSpot, Member)
+       <getMainList>  → the manager getter (e.g. getSpots, getMembers)
+
+  c) UPDATE the menu switch in Main: replace each multi-line save/read case
+     body with a single call:
+         case <NSave>:  writeText(); break;
+         case <NRead>:  readText();  break;
+     Do NOT renumber other cases. Do NOT change menu labels.
+
+  d) ADD these imports to Main.java if missing:
+         import java.io.File;
+         import java.io.FileNotFoundException;
+         import java.util.Formatter;
+         import java.util.NoSuchElementException;
+
+  e) RULES TO RESPECT during the migration:
+       - Do NOT introduce any NEW exception type.
+       - Do NOT use try-with-resources.
+       - Catch order MUST be:
+            writeText: SecurityException → FileNotFoundException
+            readText:  FileNotFoundException → NoSuchElementException → IllegalStateException
+       - Do NOT change the file format or the 45-dash separator.
+       - Do NOT touch any other class.
+       - The new methods are PUBLIC STATIC VOID with NO parameters.
+       - Use simple Javadoc on each method (one sentence, no @param/@return).

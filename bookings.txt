@@ -1,0 +1,20 @@
+Booking ID: 9968
+Spot Number: 1
+Vehicle Plate: ABC123
+Charger Type: 
+Model: Standard
+Status: CONFIRMED
+Hours: 3
+Total Cost: 21.00 SAR
+
+---------------------------------------------
+Booking ID: 5686
+Spot Number: 3
+Vehicle Plate: XYZ789
+Charger Type: Fast Charger
+Model: Premium
+Status: CONFIRMED
+Hours: 2
+Total Cost: 50.00 SAR
+
+---------------------------------------------

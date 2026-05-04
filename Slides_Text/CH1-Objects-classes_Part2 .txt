@@ -1,0 +1,189 @@
+# Extracted from: CH1-Objects-classes_Part2 .pdf
+
+--- Page 1 ---
+CHAPTER 1:CLASSES AND OBJECTS (PART 2)CS111: Programming Language II 
+
+--- Page 2 ---
+TOPICS
+2Static Variables, Constants, And MethodsFinal Instance variable Passing Objects To MethodsArray of  Objects
+
+--- Page 3 ---
+Static Variables, Constants, And MethodsIntroduction _ The Math class
+33¾It would be tedious to create a new Math object every time we wanted to do a little math.¾Thankfully, we never need to instantiate a Math object.¾Math fields and methods are accessed by directly referencing the Math class.¾These are known as static variables and static methods.
+
+--- Page 4 ---
+Static Variables, Constants, And MethodsIntroduction _ The Math class
+44¾It would be tedious to create a new Math object every time we wanted to do a little math.¾Thankfully, we never need to instantiate a Math object.¾Math fields and methods are accessed by directly referencing the Math class.¾These are known as static variables and static methods.
+
+
+--- Page 5 ---
+Static Variables, Constants, And Methods
+55¾Static variables are shared by all the instances of  the class.¾Static methods are NOT TIED to a specific object.¾Static constants are final variables shared by all the instances of  the class.¾To declare static variables, constants, and methods,use the static modifier.
+
+--- Page 6 ---
+Static Variables
+66¾There is only one copy of  a static variable, no matter how many objects (or none) are created.¾Static variables belong to the class, not to any individual object.¾Changing a static variable once affects all instances.¾A static variable can be accessed without creating an object.¾A static variable is also called a class variable.¾If  a static variable is not initialized, the compiler assigns it a default value.
+
+
+--- Page 7 ---
+Manipulating static members (variables/methods)¾ public static members  can be accessed through an object reference,  or using  class name and a dot (.)¾ Accessing static members without objects:public static Ⱥuse ClassName.memberprivate static Ⱥaccess it through a public static method
+7
+
+--- Page 8 ---
+Manipulating static members (variables/methods)¾Static methods are used to access static variables  ¾A static method CANNOTaccess non-static class members¾The this reference CANNOT be used in a static method. ¾The this reference MUST refer to a specific object of  the class, and when a static method is called, there might not be any objects of  its class in memory. 
+8
+
+--- Page 9 ---
+Static Variables
+99¾A variable becomes static when its declaration includes the static keyword.¾Initialize static variables as they·re declared.¾Example: Demonstrate the roles of  instance and class variables and their uses by tracking the number of  Circle objects created.
+
+
+--- Page 10 ---
+STATIC VARIABLES EXAMPLE (Circle Example)
+1010¾Objective:Demonstrate the roles of  instance and class variables and their uses by tracking the number of  Circle objects created.
+
+
+--- Page 11 ---
+STATIC VARIABLES EXAMPLE (Circle Example)
+1111
+
+
+--- Page 12 ---
+23Key idea: final means assign once, then it cannot change.¾A final variable must be initialized exactly once (at declaration or in a constructor).¾ If  a class has multiple constructors, each constructor must initialize every final instance variable.¾A static final variable is a class constant (one shared value for all objects).¾Naming convention: constants are usually UPPER_CASE_WITH_UNDERSCORES.
+
+--- Page 13 ---
+23
+
+
+--- Page 14 ---
+Passing Objects To Methods
+1414¾Java, everything is passed by value.¾When an object is passed to a method, the value passed is the reference to the object, NOT a copy of  the object itself.¾No duplicate object is created when passing an object to a method.¾Primitive types (int, double, etc.):The value itself  is passed.Changes inside the method do not affect the original variable.¾Reference types (objects):The reference (address) is passed.Changes to the object·s fields do affect the original object.
+
+--- Page 15 ---
+Passing Objects To MethodsExample: Passing A Primitive And An Object
+15
+What Happens During the Method Call?¾times receives a copy of  n Ⱥchanging times does not change n.¾c receives a copy of  the reference to myCircle Ⱥboth c and myCircle refer to the same Circle object.¾Modifying the object through c changes the object seen by myCircle.
+
+--- Page 16 ---
+COPY CONSTRUCTOR 
+16Why Copy Constructor¾Sometimes we need a new object with the same values.¾obj2 = obj1 does NOT FUHDWHDQHZREMHFWȺLWFRSLHVWKHreference.Copy Constructor (Definition)¾A copy constructor is a constructor that receives an object of  the same class.¾It creates a new object and copies the values.
+
+
+--- Page 17 ---
+Array of  Objects
+17¾An array in Java can store objects as well as primitive values.¾An array of  objects is actually an array of  references, not the objects themselves.¾When an object array is created using new, all elements are initialized to null by default. (Creating the array creating the objects inside it.)¾Each object in the array must be created individually using new.¾Accessing an object·s data requires two levels of  referencing:The array referenceThe object reference inside the array
+
+--- Page 18 ---
+Array of  Objects
+18
+
+
+--- Page 19 ---
+IMMUTABLE OBJECTS AND CLASSES
+19¾Definition: An immutable class creates objects whose fields never change after it is created.¾Examples:   String, Integer(Class)¾Why it matters:Objects are safer to useNo unexpected changes to object dataSuitable for sharing objects between methods ¾How to designMake fields private finalNo setters ȺFKDQJHVKDSSHQE\FUHDWLQJDnew object.Initialize everything in the constructor.
+
+--- Page 20 ---
+20STRINGS ARE IMMUTABLEDoes the following code change the contents of  the string?        String s = "Java";       s = "HTML";
+
+--- Page 21 ---
+21TRACE CODEString s = "Java";       s = "HTML";String s = "Java";       s = "HTML";
+
+
+--- Page 22 ---
+BUILT-IN CLASSES IN JAVA
+22¾Java provides ready-made classes.¾These classes help us work with common data easily.¾Examples:StringCharacterWrapper classes (Integer, Double, «)
+
+--- Page 23 ---
+THE STRING CLASS
+23The String class¾String is a class, not a primitive type.¾A String object represents a sequence of  characters.¾Strings are widely used to store text data.Creating String Objects¾A String variable stores a reference to a String object.¾This is similar to creating any other object.
+
+
+--- Page 24 ---
+THE STRING CLASS METHODS
+24¾length(): method to return the number of  characters in a string. ¾charAt(index): The s.charAt(index) method can be used to retrieve a specific character in a string s, where the index is between 0 and s.length()²1. 
+
+
+--- Page 25 ---
+THE STRING CLASS METHODS
+25
+¾substring(beginIndex) Returns this string·s substring that begins with the character at the specified beginIndex and extends to the end of  the string.¾substring(beginIndex, endIndex) Returns this string·s substring that begins at the specified beginIndex and extends to the character at index endIndex ² 1.
+
+--- Page 26 ---
+THE STRING CLASS METHODS
+26¾String Comparisonequals(s1) Returns true if  this string is equal to string s1. equalsIgnoreCase(s1) Returns true if  this string is equal to string s1; it is case insensitive.
+
+
+--- Page 27 ---
+THE STRING CLASS METHODS
+27¾Searching & ModifyingindexOf(s) Returns the index of  the first occurrence of  string s in this string. Returns -1 if  not matchedtrim() Returns a new string with whitespace characters trimmed on both sides.
+
+
+--- Page 28 ---
+THE STRING CLASS METHODS
+28¾toUpperCase(): method returns a new string with all uppercase letters¾toLowerCase(): method returns a new string with all lowercase letters 
+
+
+--- Page 29 ---
+THE STRING CLASS METHODS
+29¾More methods:contains(s1)lastIndexOf(ch, fromIndex)matches(s1)«etc
+
+--- Page 30 ---
+WRAPPERCLASSES
+30¾Wrapper classes are built-in classes that represent primitive values as objects.¾Wrapper classes provide useful static methods and constants.¾Each primitive type has a corresponding wrapper class:
+
+
+--- Page 31 ---
+PROCESSING PRIMITIVE AS OBJECTS
+31¾Primitive types are not objects¾Wrapper classes allow primitives to be treated as objects¾Some operations and Java features work better with objects.¾Wrapper classes provide:Conversion from String to numbersUseful constants like min/max valuesUtility methods such as compare and value conversion
+
+--- Page 32 ---
+AUTOMATIC CONVERSION (AUTOBOXING & UNBOXING)
+32¾Automatic Conversion means Java can automatically convert between:primitive types LQWGRXEOHFKDU«wrapper classes ,QWHJHU'RXEOH&KDUDFWHU«¾Autoboxing vs. Unboxing  What is Autoboxing?Java automatically converts a primitive to a wrapper objectHappens when Java needs an object, but you give it a primitive What is Unboxing?Java automatically converts a wrapper object to a primitiveHappens when Java needs a primitive, but you give it an object
+
+
+--- Page 33 ---
+WHEN DOES AUTOBOXING AND UNBOXING OCCUR?
+33
+
+
+--- Page 34 ---
+WHEN DOES AUTOBOXING AND UNBOXING OCCUR?
+34
+
+
+--- Page 35 ---
+INTEGER CLASS METHODS (EXAMPLES)
+35
+Note: Instance methods are called using an object, while static methods are called using the class name because they do not depend on an object·s value.
+
+--- Page 36 ---
+DOUBLE CLASS METHODS (EXAMPLES)
+36
+
+
+--- Page 37 ---
+CHARACTER CLASS METHODS (EXAMPLES)
+37
+
+
+--- Page 38 ---
+BOOLEAN CLASS METHODS (EXAMPLES)
+38
+
+
+--- Page 39 ---
+THE CHARACTER CLASS
+39The Character Class¾Character is a class that represents a single character.¾It is different from the primitive type char.¾Useful Character Methods
+
+
+--- Page 40 ---
+CASE STUDY
+40¾ Create the Student class:a) Declare the following instance variables as private:id (int)name (String)gpa (double)b)        Declare a static variable: totalStudents (int)ȺThis variable counts how many Student objects have been created.c)  Implement the following constructors:Constructor 1: initializes id, name, and gpa.Constructor 2: initializes only id and name, and sets gpa to 0.0.Each constructor must increment totalStudentsd)Implement a static method getTotalStudents() that returns the value of  totalStudents.e)Implement the following methods:displayInfo() ȺDisplays all student information.updateGPA(double newGpa)ȺUpdates the GPA only if the value is between 0.0 and 5.0.
+
+--- Page 41 ---
+CASE STUDY
+41¾In a test class:f) write a methodpublic static void changeName(Student s)The method changes the student·s name.Call this method and observe whether the original object changes.g) Array creation:Create an array that can store 3 Student objects Create the objects using different constructorsStore them in the arrayh)Use a loop to display all students·information.i)GPA Input:Ask the user to enter the GPA and read it as a String.Convert the value to Double.Assign it to the student object using updateGPA().
+
+--- Page 42 ---
+THE END41
+Students are required to refer to Introduction to Java Programming, Comprehensive Version by Y. Daniel Liang, Chapter 9: Objects and Classes and Chapter 10: Object Oriented Thinkingfor studying and solving exercises.

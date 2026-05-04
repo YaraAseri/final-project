@@ -1,0 +1,356 @@
+# Extracted from: CH3-Inheritance Fundmentals _v2.pdf
+
+--- Page 1 ---
+CS111: Programming Language II
+
+--- Page 2 ---
+2The Inheritance or “is a” Relationship
+Inheritance, some rules …
+Extends keyword
+Constructors in Subclasses
+Method override  
+The object class
+
+--- Page 3 ---
+3Inheritance is a fundamental object -oriented technique 
+used to create reusable classes.
+It allows a programmer to create a new class based on 
+an existing class.
+The existing class is called the superclass (parent / base 
+class): the class being inherited from .
+The new class is called the subclass (child / derived 
+class): the class that inherits from another class .
+The subclass inherits accessible fields and methods 
+from the superclass.
+
+
+--- Page 4 ---
+4Code reuse: Put common fields/methods in the superclass and reuse 
+them in subclasses (avoid duplicate code).
+Specialization : Create a more specific class by adding new members or 
+overriding inherited methods.
+Easier maintenance: Changes in the superclass automatically apply to all subclasses, making updates faster and consistent.
+
+--- Page 5 ---
+5 Inheritance Represents an "is-a" Relationship
+Each object of a subclass is also an object of its superclass.
+Examples ：
+ A Student is a Person.
+A Car is a Vehicle.
+ Java supports only single inheritance
+each class is derived from exactly one direct superclass. 
+
+
+--- Page 6 ---
+6In UML class diagrams, inheritance is represented by:
+A solid line with a hollow triangle arrow pointing to the parent 
+class.
+The arrow always points from the child to the parent.
+What Does a Subclass Inherit?
+public and protected members of the superclass.
+A subclass cannot directly access private fields of the superclass.
+Private data should be accessed using getter and setter methods.
+
+
+--- Page 7 ---
+Use extends  to create an is -a relationship
+7
+ Note : final class
+•A final class cannot be extended (no subclasses).
+
+--- Page 8 ---
+8
+Inheritance  enables  you to 
+define  a general  class  (i.e., a 
+superclass)  and later  extend  it 
+to more  specialized classes 
+(i.e., subclasses) .
+The GeometricObject  class  is 
+the superclass  for Circle and 
+Rectangle.
+Refer  to the book  for full code
+
+--- Page 9 ---
+public
+Accessible from anywhere.
+In inheritance: subclass can access it normally.
+private
+Accessible only inside the same class.
+In inheritance: subclass cannot access it directly.
+default (package -private)
+accessible within the same package only (no keyword).
+In inheritance : a subclass can access it only if it is in the same package.
+protected
+accessible in subclasses; also accessible within the same package
+In inheritance: subclass can access it even if it is in a different package9
+
+
+--- Page 10 ---
+10
+1
+2 3
+
+--- Page 11 ---
+11 Modifier  
+on members  
+in a class  Accessed  
+from the  
+same class  Accessed  
+from the  
+same package  Accessed  
+from a  
+subclass  Accessed  
+from a different  
+package  
+public  
+protected  - 
+default  - - 
+private  - - - 
+
+--- Page 12 ---
+12 
+public class C1 {  
+  public int x;  
+  protected int y;  
+  int z;  
+  private int u;  
+  
+  protected void m() {  
+  } 
+} public class C2 {  
+  C1 o = new C1();  
+  can access o.x;  
+  can access o.y;  
+  can access o.z;  
+  cannot access o.u;  
+   
+  can invoke o.m();  
+} 
+public class C3     
+          extends C1  { 
+  can acce ss x;  
+  can access y;  
+  can access z;  
+  cannot access u;  
+   
+  can invoke m();  
+} package p1;  
+public class C4  
+        extends C1  { 
+  can access x;  
+  can access y;  
+  cannot access z;  
+  cannot access u;  
+   
+  can invoke m();  
+} package p2;  
+public class C5 {  
+  C1 o = new C1();  
+  can access o.x;  
+  cannot access o.y;  
+  cannot access o.z;  
+  cannot access o.u;  
+   
+  cannot invoke o.m();  
+} 
+
+--- Page 13 ---
+Constructors are NOT inherited.
+When you create a child object, Java must build the parent part first.
+If you don ’t write super , Java automatically inserts super() as the first line in the 
+child constructor.
+super(...) must be the first statement in the constructor.
+If the parent does not have a no -arg constructor Parent(), then the child must 
+explicitly call one of the parent ’s constructors using super(parameters).
+13
+
+--- Page 14 ---
+Constructors are NOT inherited.
+When a subclass object is created, the superclass constructor runs first.
+If  you do not write super(...), Java automatically inserts super() as the first 
+statement.
+If  the superclass has no default (no- arg) constructor, the subclass must 
+explicitly call a superclass constructor using super(parameters).
+    Now let ’s see these rules in real code
+14
+
+--- Page 15 ---
+15Example 1 — Parent has default constructor (super happens automatically)
+What is the Output?
+
+--- Page 16 ---
+16Example 2_Parent has a no- arg constructor (super() is OPTIONAL )
+What is the 
+Output?
+
+--- Page 17 ---
+17Example 3 — Parent has ONLY parameter constructor (super(… ) is REQUIRED)
+If the parent defines only parameterized constructors, the child MUST explicitly call super(...) .
+
+
+--- Page 18 ---
+Constructor Chaining
+18 A constructor can call another constructor using super(...) or this(...).
+This creates a constructor call chain , where constructors are executed 
+from superclass to subclass.
+The constructor call must be the first statement.
+The chain always ends with the Object class constructor.
+
+--- Page 19 ---
+Constructor Chaining
+19
+What is the 
+Output?
+
+
+--- Page 20 ---
+Defining a Subclass
+20A subclass inherits from a superclass. You can also:
+Add new properties
+Add new methods
+Override the methods of the superclass
+
+--- Page 21 ---
+Overriding Methods
+21A subclass inherits methods from a superclass.
+ Sometimes it is necessary for the subclass to 
+modify the implementation of a method 
+defined in the superclass. This is referred to as method overriding . 
+Overriding requires the same method 
+signature (same name + same parameters).
+Use @Override to ensure you are really 
+overriding a parent method.
+
+
+--- Page 22 ---
+Overriding Methods
+22Example 1 — Basic Overriding (same method signature)
+What is the 
+Output?
+
+--- Page 23 ---
+Why we use @Override annotation
+@Override tells the compiler that this method must override  a method from the 
+parent class.
+If the method does not correctly override a parent method (wrong name or 
+parameters),
+the compiler will generate an error .
+Without @Override , a mistake may cause the method to be treated as a new 
+method ,
+and no compile- time error will appear .
+Although @Override is not required, it is strongly recommended because it helps 
+prevent errors .
+
+  Good practice:
+From now on, you MUST use @Override when overriding methods. 23
+
+--- Page 24 ---
+Overriding Methods
+24Example 2 — Calling the parent method using super.methodName ()
+Use super.methodName () when you override a method but still want to reuse 
+the parent ’s behavior .
+What is 
+the 
+Output?
+
+--- Page 25 ---
+Overriding  Final  Methods
+25 A final method cannot be overridden.
+Trying to override it causes a compile- time error.
+
+
+--- Page 26 ---
+Field Shadowing
+26 Field shadowing happens when a subclass declares a field with the same name as 
+the parent.
+This is NOT overriding. It ’s better to avoid it.
+
+
+--- Page 27 ---
+27
+
+
+--- Page 28 ---
+The Object Class (Root of the Hierarchy)
+28Every class in Java is descended from the java.lang.Object  class (directly or 
+indirectly).
+If no inheritance is specified, the superclass of the class is Object.
+The following two class definitions are equivalent:
+
+
+--- Page 29 ---
+Why the Object Class Matters
+29Because of inheritance, every Java object has common methods inherited from 
+Object, such as:
+toString ()
+equals(Object obj)
+getClass ()
+hashCode ()
+
+--- Page 30 ---
+The toString() Method in Object
+30The toString () method returns a string representation of an 
+object.
+When you print an object: 
+ System.out.println(obj);
+Java automatically calls: 
+       obj.toString ()  at run time
+Default output looks like:
+ ClassName @hashCode
+The default output is not very informative.
+Therefore, we usually override toString () in our classes
+
+
+--- Page 31 ---
+31Override toString() to print meaningful information.
+Use @Override to avoid mistakes.
+
+
+--- Page 32 ---
+32
+getClass() tells you the actual class of an object at runtime.
+Returns runtime type information about the object (its class).
+Useful for checking the exact class name at runtime.
+
+
+--- Page 33 ---
+33
+
+
+--- Page 34 ---
+34Level A — Build the Base
+a)Create class Person with private name, id.
+b)Add constructor + getters.
+c)Implement toString() in Person to return:
+d)"Person[name=..., id=...]"
+e)Create Student extends Person with private major.
+f)Student constructor must call super(name, id).
+
+
+--- Page 35 ---
+35
+Level B — Validation + Overriding
+a)In Employee, add salary with validation:
+b)salary must be > 0, otherwise set to 1 and print message: 
+"Invalid salary. Set to 1."
+c)Override toString() in Student to include major: Student[name=..., id=..., major=...]
+d)Create Undergrad with level validation: level must be between 1 and 5, if invalid → keep old value and print: 
+"Invalid level. Must be 1..5"
+e) Write a test in main:
+create one Student + one Employee
+print them (to test toString() overriding)
+
+--- Page 36 ---
+36
+Level C — Array practice
+In main, create an array of  type Person with size 3.
+Store objects in the array (your choice of  mix): 
+Student, Employee, Undergrad, Grad, Faculty.
+Loop through the array and print each object using System.out.println (obj);
+
+--- Page 37 ---
+30
+Students are required to refer to  
+Introduction to Java Programming, Comprehensive Version by Y . Daniel Liang,
+Chapter 11: INHERITANCE AND POLYMORPHISM,  
+for studying and solving exercises.

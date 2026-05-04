@@ -1,0 +1,115 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="PSBS UML" id="psbs-uml-001">
+    <mxGraphModel dx="2741" dy="828" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" parent="1" style="swimlane;html=1;fontStyle=0;align=center;startSize=40;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;&lt;interface&gt;&gt;&lt;br&gt;&lt;b&gt;Bookable&lt;/b&gt;" vertex="1">
+          <mxGeometry height="148" width="250" x="380" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="3" parent="2" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;" value="+MAX_BOOKING_HOURS : int = 12&lt;br&gt;+MIN_BOOKING_HOURS : int = 1" vertex="1">
+          <mxGeometry height="40" width="250" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="4" parent="2" style="line;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;" value="" vertex="1">
+          <mxGeometry height="8" width="250" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="5" parent="2" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;" value="+book() : void&lt;br&gt;+cancel() : void&lt;br&gt;+calcCost() : double" vertex="1">
+          <mxGeometry height="60" width="250" y="88" as="geometry" />
+        </mxCell>
+        <mxCell id="6" parent="1" style="swimlane;html=1;align=center;startSize=30;fillColor=#fff2cc;strokeColor=#d6b656;" value="&lt;i&gt;&lt;b&gt;ParkingSpot&lt;/b&gt;&lt;/i&gt;" vertex="1">
+          <mxGeometry height="290" width="290" x="60" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="7" parent="6" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;" value="-spotNum : int&lt;br&gt;-floorNum : int&lt;br&gt;-section : String&lt;br&gt;-isAvailable : boolean&lt;br&gt;&lt;u&gt;-totalparking : int&lt;/u&gt;&lt;br&gt;-vehicleNumber : Vehicle[]" vertex="1">
+          <mxGeometry height="120" width="290" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="8" parent="6" style="line;html=1;strokeColor=#d6b656;fillColor=#fff2cc;" value="" vertex="1">
+          <mxGeometry height="8" width="290" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="9" parent="6" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;" value="+EmptyParking() : int&lt;br&gt;&lt;i&gt;+book() : void&lt;/i&gt;&lt;br&gt;&lt;i&gt;+cancel() : void&lt;/i&gt;&lt;br&gt;&lt;i&gt;+calcCost() : double&lt;/i&gt;&lt;br&gt;+toString() : String" vertex="1">
+          <mxGeometry height="132" width="290" y="158" as="geometry" />
+        </mxCell>
+        <mxCell id="10" parent="1" style="swimlane;html=1;align=center;startSize=30;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;b&gt;RegularSpot&lt;/b&gt;" vertex="1">
+          <mxGeometry height="230" width="220" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="11" parent="10" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;" value="-covered : boolean" vertex="1">
+          <mxGeometry height="20" width="220" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="12" parent="10" style="line;html=1;strokeColor=#82b366;fillColor=#d5e8d4;" value="" vertex="1">
+          <mxGeometry height="8" width="220" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="13" parent="10" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;" value="+calcPrise() : double&lt;br&gt;+calcCost() : double&lt;br&gt;+parkingSpace() : int&lt;br&gt;+upgradeToVip() : void&lt;br&gt;+book() : void&lt;br&gt;+cancel() : void&lt;br&gt;+toString() : String" vertex="1">
+          <mxGeometry height="172" width="220" y="58" as="geometry" />
+        </mxCell>
+        <mxCell id="14" parent="1" style="swimlane;html=1;align=center;startSize=30;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;b&gt;VIPSpot&lt;/b&gt;" vertex="1">
+          <mxGeometry height="230" width="220" x="230" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="15" parent="14" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;" value="-valetDriver : boolean" vertex="1">
+          <mxGeometry height="20" width="220" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="16" parent="14" style="line;html=1;strokeColor=#82b366;fillColor=#d5e8d4;" value="" vertex="1">
+          <mxGeometry height="8" width="220" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="17" parent="14" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;" value="+calcPrise() : double&lt;br&gt;+calcCost() : double&lt;br&gt;+EmptyParking() : int&lt;br&gt;+vipFeatures() : void&lt;br&gt;+book() : void&lt;br&gt;+cancel() : void&lt;br&gt;+toString() : String" vertex="1">
+          <mxGeometry height="172" width="220" y="58" as="geometry" />
+        </mxCell>
+        <mxCell id="18" parent="1" style="swimlane;html=1;align=center;startSize=30;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;b&gt;DisabilitySpot&lt;/b&gt;" vertex="1">
+          <mxGeometry height="260" width="250" x="460" y="670" as="geometry" />
+        </mxCell>
+        <mxCell id="19" parent="18" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;" value="-chairIncluded : boolean&lt;br&gt;-disabilityPermitId : int&lt;br&gt;-permitHolderName : String" vertex="1">
+          <mxGeometry height="60" width="250" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="20" parent="18" style="line;html=1;strokeColor=#82b366;fillColor=#d5e8d4;" value="" vertex="1">
+          <mxGeometry height="8" width="250" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="21" parent="18" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;" value="+calcPrise() : double&lt;br&gt;+calcCost() : double&lt;br&gt;+EmptyParking() : int&lt;br&gt;+checkAccessibilityFeature() : void&lt;br&gt;+book() : void&lt;br&gt;+cancel() : void&lt;br&gt;+toString() : String" vertex="1">
+          <mxGeometry height="162" width="250" y="98" as="geometry" />
+        </mxCell>
+        <mxCell id="22" parent="1" style="swimlane;html=1;align=center;startSize=30;fillColor=#ffe6cc;strokeColor=#d79b00;" value="&lt;b&gt;Booking&lt;/b&gt;" vertex="1">
+          <mxGeometry height="390" width="260" x="760" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="23" parent="22" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;" value="-BOOKING_ID : int  {final}&lt;br&gt;-parkingSpot : ParkingSpot&lt;br&gt;-vehicle : Vehicle&lt;br&gt;-chargerType : String&lt;br&gt;-model : String&lt;br&gt;-status : String&lt;br&gt;-hours : int&lt;br&gt;&lt;u&gt;-count : int&lt;/u&gt;" vertex="1">
+          <mxGeometry height="160" width="260" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="24" parent="22" style="line;html=1;strokeColor=#d79b00;fillColor=#ffe6cc;" value="" vertex="1">
+          <mxGeometry height="8" width="260" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="25" parent="22" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;" value="+calcPrise() : double&lt;br&gt;+confirm() : void&lt;br&gt;+book() : void&lt;br&gt;+cancel() : void&lt;br&gt;+calcCost() : double&lt;br&gt;+toString() : String" vertex="1">
+          <mxGeometry height="192" width="260" y="198" as="geometry" />
+        </mxCell>
+        <mxCell id="26" parent="1" style="swimlane;html=1;align=center;startSize=30;fillColor=#f8cecc;strokeColor=#b85450;" value="&lt;b&gt;Vehicle&lt;/b&gt;" vertex="1">
+          <mxGeometry height="190" width="240" x="760" y="690" as="geometry" />
+        </mxCell>
+        <mxCell id="27" parent="26" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;" value="-plate : String&lt;br&gt;-model : String&lt;br&gt;-company : String&lt;br&gt;-vehicleRef : String  {final}" vertex="1">
+          <mxGeometry height="80" width="240" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="28" parent="26" style="line;html=1;strokeColor=#b85450;fillColor=#f8cecc;" value="" vertex="1">
+          <mxGeometry height="8" width="240" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="29" parent="26" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;" value="+getVehicleRef() : String&lt;br&gt;+toString() : String" vertex="1">
+          <mxGeometry height="72" width="240" y="118" as="geometry" />
+        </mxCell>
+        <mxCell id="30" edge="1" parent="1" source="6" style="edgeStyle=orthogonalEdgeStyle;html=1;dashed=1;endArrow=open;endFill=0;fontSize=10;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="2" value="&lt;&lt;implements&gt;&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="31" edge="1" parent="1" source="22" style="edgeStyle=orthogonalEdgeStyle;html=1;dashed=1;endArrow=open;endFill=0;fontSize=10;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="2" value="&lt;&lt;implements&gt;&gt;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="32" edge="1" parent="1" source="10" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=open;endFill=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.2;entryY=1;entryDx=0;entryDy=0;" target="6" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="33" edge="1" parent="1" source="14" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=open;endFill=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="6" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="34" edge="1" parent="1" source="18" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=open;endFill=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.85;entryY=1;entryDx=0;entryDy=0;" target="6" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="35" edge="1" parent="1" source="22" style="edgeStyle=orthogonalEdgeStyle;html=1;startArrow=diamond;startFill=1;endArrow=none;exitX=0;exitY=0.3;exitDx=0;exitDy=0;entryX=1;entryY=0.3;entryDx=0;entryDy=0;fontSize=11;" target="6" value="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="36" edge="1" parent="1" source="22" style="edgeStyle=orthogonalEdgeStyle;html=1;startArrow=diamond;startFill=1;endArrow=none;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=11;" target="26" value="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

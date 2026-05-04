@@ -1,0 +1,247 @@
+# Extracted from: CH4-Polymorphism.pdf
+
+--- Page 1 ---
+CS111: Programming Language II
+
+--- Page 2 ---
+Polymorphism Basics
+Method Overriding
+Dynamic Binding
+General Methods
+Casting and instanceof
+The equals() Method
+Introduction to ArrayList
+Generics in ArrayList
+Polymorphism with Collections
+2
+
+--- Page 3 ---
+Polymorphism means many forms.
+In Java, polymorphism allows:
+•One superclass reference
+•To refer to different subclass objects
+➤pis a Personreference
+➤The object created is Student
+This is polymorphism
+3
+
+--- Page 4 ---
+➤“Executed method depends on the actual object (runtime), not 
+the reference type.
+➤Even though the reference is Person
+➤Java calls the Studentversionof toString()
+➤Method calls are resolved at runtime
+➤Java uses the actual object type, not the reference type
+This is why polymorphism works with overriding, not 
+overloading
+4
+
+--- Page 5 ---
+➤Polymorphism works only with:
+Inheritance
+Method overriding
+➤Fields are NOT polymorphic
+Accessed using reference type
+➤Constructors are NOT polymorphic
+5
+
+--- Page 6 ---
+Polymorphism allows a superclass reference to refer to a subclass object.
+Method overriding enables different behaviors.
+The actual method executed is decided at runtime.
+This is called dynamic binding (runtime method selection)
+https://www.thecrazyprogrammer.com/2015/04/static-binding-and-dynamic-binding-in-java.html
+6
+
+--- Page 7 ---
+Dynamic binding means: the JVM decides which overridden method to run at runtime.
+The decision is based on the actual object type, not the reference type.
+It happens when a method is overridden (polymorphism )
+7
+
+--- Page 8 ---
+What is the 
+Output?8
+
+--- Page 9 ---
+A method can be written in a 
+general way by using a 
+supertype parameter.
+If a method parameter type is a 
+superclass, you can pass any 
+subclass object to it.
+This is possible because of 
+polymorphism.
+9
+
+--- Page 10 ---
+Method Matching (Static binding)
+The compiler decides which method signature to use
+Based on:
+Method name
+Number of parameters
+Parameter types
+Happens at compile time
+Method matching (compile-time) is often called static binding
+10
+
+--- Page 11 ---
+Method Binding (Runtime)
+The JVM decides which method implementation to execute
+Based on the actual object type
+Happens at runtime
+This is called dynamic binding
+11
+
+--- Page 12 ---
+12
+
+--- Page 13 ---
+Casting is used to convert an object reference from one class type 
+to another within an inheritance hierarchy.
+Casting works only when there is an IS-A relationship between 
+classes.
+https://www.thecrazyprogrammer.com/2015/04/static-binding-and-dynamic-binding-in-java.html
+13
+
+--- Page 14 ---
+1. Implicit Casting (Upcasting)
+From subclass → superclass
+Done automatically
+Always safe
+Common in polymorphism
+14
+
+--- Page 15 ---
+2. Explicit Casting (Downcasting)
+When you treat a variable of the superclass as an instance of the subclass
+From superclass → subclass
+Must be done manually
+Can cause a runtime error
+Explicit casting does NOT change the object type, only the reference type.
+Subclass 
+variableSuperclass 
+variable15
+
+--- Page 16 ---
+Invalid Downcasting(Runtime Error)
+The object created is Person
+Java cannot treat it as Student
+Compiles fine, fails at runtime
+16
+
+--- Page 17 ---
+instanceof checks the actual object type at runtime
+Prevents ClassCastException
+Recommended before downcasting
+17
+
+--- Page 18 ---
+18
+
+--- Page 19 ---
+Person reference can point to 
+different subclass objects
+instanceof checks the actual object 
+type at runtime
+Downcastingis required to access 
+subclass-specific methods
+19
+
+--- Page 20 ---
+The equals() method is used to compare two objects.
+Defined in the Object class.
+By default, it compares references, not data.
+Signature:
+20
+
+--- Page 21 ---
+==vs equals() 
+(Default Behavior)
+==compares memory addresses
+Default equals() does the same thing
+21
+
+--- Page 22 ---
+Default equals() is often 
+not meaningful
+We usually want to 
+compare objects based 
+on their data
+Example:
+Two Person objects are 
+equal if their id is the 
+same
+22
+
+--- Page 23 ---
+Why not arrays all the time?
+Arrays have a fixed size
+Once created, the size cannot change
+Managing size manually is inconvenient
+ArrayListsolves this problem:
+Dynamic size (can grow and shrink)
+Stores objects
+Part of the Java Collections Framework
+23
+
+--- Page 24 ---
+ArrayListis a resizable array
+It stores objects of the same type
+Size changes automatically
+It belongs to java.util
+
+24
+
+--- Page 25 ---
+ArrayListis a generic class
+Generic means: the class can work with different data types, but you 
+choose the type when you create the object.
+<E> represents the element type
+<E>is a placeholder (a type variable) that will be replaced by a real 
+type such as String or Integer
+25
+
+--- Page 26 ---
+Empty list
+Size = 0
+Can grow dynamically
+26
+
+--- Page 27 ---
+ArrayList<String> list = new ArrayList<>(); 
+27
+
+--- Page 28 ---
+28
+
+--- Page 29 ---
+29
+
+--- Page 30 ---
+1. For loop
+2. enhanced for
+*We use size() instead of length
+30
+
+--- Page 31 ---
+ArrayListusually stores objects
+ Superclass reference
+ Different subclass objects
+Works naturally with:
+Classes
+Inheritance
+Polymorphism
+31
+
+--- Page 32 ---
+32
+
+--- Page 33 ---
+33
+
+--- Page 34 ---
+Students are required to refer to
+Introduction to Java Programming, Comprehensive Version by Y. Daniel Liang,
+ Chapter 11: INHERITANCE AND POLYMORPHISM,
+for studying and solving exercises.34

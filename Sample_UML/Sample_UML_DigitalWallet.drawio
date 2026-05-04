@@ -1,0 +1,190 @@
+<mxfile host="app.diagrams.net" modified="2024-01-01T00:00:00.000Z" agent="Mozilla/5.0" etag="sample" version="22.1.0" type="device">
+  <diagram name="Digital Wallet UML" id="digital-wallet-uml">
+    <mxGraphModel dx="1434" dy="780" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Interface: Transferable -->
+        <mxCell id="interface-transferable" value="&lt;&lt;interface&gt;&gt;&#xa;Transferable" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="580" y="20" width="200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="interface-transferable-methods" value="+ transfer(amount: double, dest: String): void&#xa;+ getTransferLimit(): double" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="interface-transferable">
+          <mxGeometry y="40" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Abstract Class: Account -->
+        <mxCell id="abstract-account" value="Account" style="swimlane;fontStyle=3;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="540" y="180" width="280" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="abstract-account-attrs" value="- accountId: String&#xa;- accountHolder: String&#xa;- balance: double&#xa;- creationDate: String&#xa;# MIN_BALANCE: double" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="abstract-account">
+          <mxGeometry y="26" width="280" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="abstract-account-line" value="" style="line;strokeWidth=1;fillColor=#ffffff;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="abstract-account">
+          <mxGeometry y="106" width="280" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="abstract-account-methods" value="+ Account()&#xa;+ &lt;&lt;Full Constructor&gt;&gt;&#xa;+ Setters/Getters&#xa;+ deposit(amount): void&#xa;+ withdraw(amount): void&#xa;+ calculateFees(): double&#xa;+ toString(): String" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="abstract-account">
+          <mxGeometry y="114" width="280" height="86" as="geometry" />
+        </mxCell>
+
+        <!-- Implements relationship: Account implements Transferable -->
+        <mxCell id="implements-account-transferable" value="" style="endArrow=block;endSize=16;endFill=0;dashed=1;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="abstract-account" target="interface-transferable">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="680" y="170" as="sourcePoint" />
+            <mxPoint x="680" y="130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- PersonalAccount -->
+        <mxCell id="personal-account" value="PersonalAccount" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="200" y="460" width="220" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="personal-account-attrs" value="- phoneNumber: String&#xa;- dailyLimit: double" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="personal-account">
+          <mxGeometry y="26" width="220" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="personal-account-line" value="" style="line;strokeWidth=1;fillColor=#ffffff;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="personal-account">
+          <mxGeometry y="70" width="220" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="personal-account-methods" value="+ PersonalAccount()&#xa;+ &lt;&lt;Full Constructor&gt;&gt;&#xa;+ Setters/Getters&#xa;+ withdraw(amount): void&#xa;+ calculateFees(): double&#xa;+ transfer(): void&#xa;+ getTransferLimit(): double&#xa;+ toString(): String" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="personal-account">
+          <mxGeometry y="78" width="220" height="102" as="geometry" />
+        </mxCell>
+
+        <!-- BusinessAccount -->
+        <mxCell id="business-account" value="BusinessAccount" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="570" y="460" width="220" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="business-account-attrs" value="- businessName: String&#xa;- taxId: String&#xa;- creditLimit: double" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="business-account">
+          <mxGeometry y="26" width="220" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="business-account-line" value="" style="line;strokeWidth=1;fillColor=#ffffff;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="business-account">
+          <mxGeometry y="80" width="220" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="business-account-methods" value="+ BusinessAccount()&#xa;+ &lt;&lt;Full Constructor&gt;&gt;&#xa;+ Setters/Getters&#xa;+ withdraw(amount): void&#xa;+ calculateFees(): double&#xa;+ transfer(): void&#xa;+ getTransferLimit(): double&#xa;+ toString(): String" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="business-account">
+          <mxGeometry y="88" width="220" height="92" as="geometry" />
+        </mxCell>
+
+        <!-- SavingsAccount -->
+        <mxCell id="savings-account" value="SavingsAccount" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="940" y="460" width="220" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="savings-account-attrs" value="- interestRate: double&#xa;- minBalance: double" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="savings-account">
+          <mxGeometry y="26" width="220" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="savings-account-line" value="" style="line;strokeWidth=1;fillColor=#ffffff;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="savings-account">
+          <mxGeometry y="70" width="220" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="savings-account-methods" value="+ SavingsAccount()&#xa;+ &lt;&lt;Full Constructor&gt;&gt;&#xa;+ Setters/Getters&#xa;+ withdraw(amount): void&#xa;+ calculateFees(): double&#xa;+ calculateInterest(): double&#xa;+ transfer(): void&#xa;+ getTransferLimit(): double&#xa;+ toString(): String" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="savings-account">
+          <mxGeometry y="78" width="220" height="112" as="geometry" />
+        </mxCell>
+
+        <!-- Extends relationships: Children extend Account -->
+        <mxCell id="extends-personal-account" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="personal-account" target="abstract-account">
+          <mxGeometry width="160" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="extends-business-account" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="business-account" target="abstract-account">
+          <mxGeometry width="160" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="extends-savings-account" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="savings-account" target="abstract-account">
+          <mxGeometry width="160" relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- StudentAccount (Level 2 - extends PersonalAccount) -->
+        <mxCell id="student-account" value="StudentAccount" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="200" y="700" width="220" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="student-account-attrs" value="- universityName: String&#xa;- studentId: String&#xa;- discountRate: double" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="student-account">
+          <mxGeometry y="26" width="220" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="student-account-line" value="" style="line;strokeWidth=1;fillColor=#ffffff;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="student-account">
+          <mxGeometry y="80" width="220" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="student-account-methods" value="+ StudentAccount()&#xa;+ &lt;&lt;Full Constructor&gt;&gt;&#xa;+ Setters/Getters&#xa;+ calculateFees(): double&#xa;+ toString(): String" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="student-account">
+          <mxGeometry y="88" width="220" height="52" as="geometry" />
+        </mxCell>
+
+        <!-- Extends: StudentAccount extends PersonalAccount -->
+        <mxCell id="extends-student-account" value="" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="student-account" target="personal-account">
+          <mxGeometry width="160" relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Wallet (Composition with single Account) -->
+        <mxCell id="wallet" value="Wallet" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="940" y="180" width="220" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="wallet-attrs" value="- walletId: String&#xa;- walletName: String&#xa;- createdDate: String&#xa;- account: Account" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="wallet">
+          <mxGeometry y="26" width="220" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="wallet-line" value="" style="line;strokeWidth=1;fillColor=#ffffff;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="wallet">
+          <mxGeometry y="90" width="220" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="wallet-methods" value="+ Wallet()&#xa;+ Wallet(name, date, account: Account)&#xa;+ Setters/Getters&#xa;+ getAccountBalance(): double&#xa;+ toString(): String" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="wallet">
+          <mxGeometry y="98" width="220" height="62" as="geometry" />
+        </mxCell>
+
+        <!-- Composition: Wallet contains Account (diamond on Wallet side) -->
+        <mxCell id="composition-wallet-account" value="1" style="endArrow=none;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;startArrow=diamondThin;startFill=1;startSize=14;" edge="1" parent="1" source="wallet" target="abstract-account">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="930" y="260" as="sourcePoint" />
+            <mxPoint x="830" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Transaction (Composition with TransactionItem array) -->
+        <mxCell id="transaction" value="Transaction" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="570" y="700" width="220" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="transaction-attrs" value="- transactionId: String&#xa;- transactionDate: String&#xa;- transactionType: String&#xa;- totalAmount: double&#xa;- items: TransactionItem[]&#xa;- itemCount: int" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="transaction">
+          <mxGeometry y="26" width="220" height="94" as="geometry" />
+        </mxCell>
+        <mxCell id="transaction-line" value="" style="line;strokeWidth=1;fillColor=#ffffff;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="transaction">
+          <mxGeometry y="120" width="220" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="transaction-methods" value="+ Transaction()&#xa;+ Transaction(type, date, items[])&#xa;+ Setters/Getters&#xa;+ calculateTotal(): double&#xa;+ getItemCount(): int&#xa;+ toString(): String" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="transaction">
+          <mxGeometry y="128" width="220" height="52" as="geometry" />
+        </mxCell>
+
+        <!-- TransactionItem -->
+        <mxCell id="transaction-item" value="TransactionItem" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="940" y="700" width="200" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="transaction-item-attrs" value="- itemId: String&#xa;- description: String&#xa;- amount: double&#xa;- category: String" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="transaction-item">
+          <mxGeometry y="26" width="200" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="transaction-item-line" value="" style="line;strokeWidth=1;fillColor=#ffffff;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="transaction-item">
+          <mxGeometry y="90" width="200" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="transaction-item-methods" value="+ TransactionItem()&#xa;+ &lt;&lt;Full Constructor&gt;&gt;&#xa;+ Setters/Getters&#xa;+ toString(): String" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="transaction-item">
+          <mxGeometry y="98" width="200" height="52" as="geometry" />
+        </mxCell>
+
+        <!-- Composition: Transaction contains TransactionItem[] (diamond on Transaction side) -->
+        <mxCell id="composition-transaction-item" value="1..*" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=diamondThin;startFill=1;startSize=14;" edge="1" parent="1" source="transaction" target="transaction-item">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="800" y="790" as="sourcePoint" />
+            <mxPoint x="930" y="790" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <!-- InsufficientFundsException (NO attributes section) -->
+        <mxCell id="exception" value="InsufficientFundsException" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="200" y="220" width="250" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="exception-line" value="" style="line;strokeWidth=1;fillColor=#ffffff;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=#000000;" vertex="1" parent="exception">
+          <mxGeometry y="26" width="250" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="exception-methods" value="+ InsufficientFundsException()&#xa;+ InsufficientFundsException(message)" style="text;strokeColor=none;fillColor=#ffffff;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="exception">
+          <mxGeometry y="34" width="250" height="46" as="geometry" />
+        </mxCell>
+
+        <!-- Throws relationship: Account throws Exception -->
+        <mxCell id="throws-exception" value="throws" style="endArrow=open;endSize=12;dashed=1;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="abstract-account" target="exception">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="530" y="280" as="sourcePoint" />
+            <mxPoint x="460" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
