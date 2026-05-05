@@ -39,7 +39,7 @@ public class ParkingSystem {
     }
 
     public void displayAllSpots() {
-        if (spots.size() == 0) { System.out.println("No spots registered."); return; }
+        if (spots.isEmpty()) { System.out.println("No spots registered."); return; }
         for (int i = 0; i < spots.size(); i++) {
             System.out.println(spots.get(i));
             System.out.println("------------------------------------------");
@@ -83,7 +83,7 @@ public class ParkingSystem {
     }
 
     public void displayAllBookings() {
-        if (bookings.size() == 0) { System.out.println("No bookings found."); return; }
+        if (bookings.isEmpty()) { System.out.println("No bookings found."); return; }
         for (int i = 0; i < bookings.size(); i++) {
             System.out.println(bookings.get(i));
             System.out.println("==========================================");
@@ -102,9 +102,7 @@ public class ParkingSystem {
         if (!found) System.out.println("No spots found in section: " + keyword);
     }
 
-    /**
-     * @return total revenue from all CONFIRMED bookings
-     */
+    // return total revenue from all CONFIRMED bookings
     public double calculateTotalRevenue() {
         double total = 0.0;
         for (int i = 0; i < bookings.size(); i++) {
